@@ -5,172 +5,85 @@ from recommendation import generate_recommendation
 from agent import run_insightpilot
 
 
-# =========================================================
-# PAGE CONFIG
-# =========================================================
+# ============================================================
+# PAGE CONFIGURATION
+# ============================================================
 
 st.set_page_config(
-    page_title="InsightPilot | AI Decision Support",
+    page_title="InsightPilot",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 
-# =========================================================
-# CUSTOM CSS
-# =========================================================
+# ============================================================
+# SIMPLE CLEAN STYLING
+# ============================================================
 
 st.markdown(
     """
     <style>
 
-    /* Main background */
     .stApp {
-        background: #f7f9fc;
+        background-color: #f7f9fc;
     }
 
-    /* Main content width */
     .block-container {
-        max-width: 1200px;
         padding-top: 2rem;
         padding-bottom: 3rem;
+        max-width: 1200px;
     }
 
-    /* Header */
-    .hero {
-        padding: 1.5rem 2rem;
-        border-radius: 18px;
-        background: linear-gradient(135deg, #172554, #2563eb);
-        color: white;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.18);
+    h1, h2, h3 {
+        color: #102a43 !important;
     }
 
-    .hero-title {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin-bottom: 0.2rem;
+    /* Question input */
+    textarea {
+        background-color: #ffffff !important;
+        color: #102a43 !important;
+        border: 2px solid #bcccdc !important;
+        border-radius: 10px !important;
+        font-size: 16px !important;
     }
 
-    .hero-subtitle {
-        font-size: 1.05rem;
-        opacity: 0.9;
+    textarea:focus {
+        border-color: #1f4e79 !important;
     }
 
-    /* Section headings */
-    .section-title {
-        font-size: 1.35rem;
-        font-weight: 750;
-        color: #172033;
-        margin-top: 1.5rem;
-        margin-bottom: 0.8rem;
+    textarea::placeholder {
+        color: #7b8794 !important;
+        opacity: 1 !important;
     }
 
-    /* KPI cards */
-    .kpi-card {
-        background: white;
-        border: 1px solid #e5e7eb;
-        border-radius: 15px;
-        padding: 1.2rem;
-        min-height: 125px;
-        box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+    /* Analyze button */
+    div.stButton > button {
+        background-color: #1f4e79 !important;
+        color: #ffffff !important;
+        border-radius: 8px !important;
+        border: none !important;
+        font-weight: 700 !important;
+        min-height: 45px !important;
+        padding: 8px 20px !important;
     }
 
-    .kpi-label {
-        font-size: 0.85rem;
-        color: #64748b;
-        margin-bottom: 0.35rem;
-    }
-
-    .kpi-value {
-        font-size: 1.55rem;
-        font-weight: 800;
-        color: #172033;
-    }
-
-    .kpi-negative {
-        color: #dc2626;
-    }
-
-    /* Root cause */
-    .cause-card {
-        background: white;
-        border-left: 5px solid #2563eb;
-        border-radius: 14px;
-        padding: 1.25rem;
-        box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
-    }
-
-    .cause-label {
-        color: #64748b;
-        font-size: 0.85rem;
-    }
-
-    .cause-value {
-        font-size: 1.4rem;
-        font-weight: 800;
-        color: #172033;
-        margin-top: 0.3rem;
-    }
-
-    /* Evidence */
-    .evidence-card {
-        background: #fff7ed;
-        border: 1px solid #fed7aa;
-        border-radius: 14px;
-        padding: 1.2rem;
-    }
-
-    .evidence-title {
-        font-size: 1.1rem;
-        font-weight: 750;
-        color: #9a3412;
-    }
-
-    /* Finding cards */
-    .finding {
-        background: white;
-        border: 1px solid #e5e7eb;
-        border-radius: 12px;
-        padding: 0.9rem 1rem;
-        margin-bottom: 0.6rem;
-        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
-    }
-
-    .finding strong {
-        color: #172033;
-    }
-
-    /* Recommendation */
-    .recommendation-card {
-        background: white;
-        border: 1px solid #dbeafe;
-        border-radius: 15px;
-        padding: 1.3rem;
-        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.08);
-    }
-
-    /* Footer */
-    .footer {
-        text-align: center;
-        color: #64748b;
-        font-size: 0.8rem;
-        padding-top: 2rem;
+    div.stButton > button:hover {
+        background-color: #163a5c !important;
+        color: #ffffff !important;
     }
 
     /* Sidebar */
-    section[data-testid="stSidebar"] {
-        background: #ffffff;
-        border-right: 1px solid #e5e7eb;
+    [data-testid="stSidebar"] {
+        background-color: #102a43;
     }
 
-    /* Buttons */
-    .stButton > button {
-        width: 100%;
-        border-radius: 10px;
-        font-weight: 700;
-        min-height: 45px;
+    [data-testid="stSidebar"] h1,
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3,
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] span {
+        color: #ffffff !important;
     }
 
     </style>
@@ -179,474 +92,453 @@ st.markdown(
 )
 
 
-# =========================================================
+# ============================================================
 # SIDEBAR
-# =========================================================
+# ============================================================
 
 with st.sidebar:
 
-    st.write("### 📊 InsightPilot")
+    st.title("📊 InsightPilot")
+
+    st.write("Evidence-Based Business Decision Support")
+
+    st.divider()
+
+    st.subheader("🔄 Analysis Pipeline")
+
+    st.markdown("### ① Member 1")
+    st.write("What happened?")
+
+    st.markdown("### ② Member 2")
+    st.write("What might have caused it?")
+
+    st.markdown("### ③ Member 3")
+    st.write("Can we trust the cause?")
+
+    st.markdown("### ④ Member 4")
+    st.write("What should the business do?")
+
+    st.divider()
+
+    st.subheader("🛡️ Safety Principle")
 
     st.write(
-        "AI-powered business intelligence and "
-        "evidence-aware decision support."
-    )
-
-    st.write("---")
-
-    st.write("### 🧠 Agent Pipeline")
-
-    st.write("🔹 Member 1 — What happened?")
-    st.write("🔹 Member 2 — What might have caused it?")
-    st.write("🔹 Member 3 — Can we trust the cause?")
-    st.write("🔹 Member 4 — What should we do?")
-
-    st.write("---")
-
-    st.write("### ✨ Key Capability")
-
-    st.info(
-        "InsightPilot does not treat an uncertain "
-        "root cause as a confirmed fact."
+        "An uncertain cause is never presented "
+        "as a confirmed cause."
     )
 
 
-# =========================================================
-# HERO HEADER
-# =========================================================
+# ============================================================
+# HEADER
+# ============================================================
 
-st.markdown(
-    """
-    <div class="hero">
-        <div class="hero-title">📊 InsightPilot</div>
-        <div class="hero-subtitle">
-            From Data → Evidence → Decisions
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
+st.title("📊 InsightPilot")
 
 st.write(
     "Transform business data into understandable insights, "
     "validated causes, and actionable recommendations."
 )
 
+st.divider()
 
-# =========================================================
-# USER QUESTION
-# =========================================================
 
-st.markdown(
-    '<div class="section-title">Ask InsightPilot</div>',
-    unsafe_allow_html=True
+# ============================================================
+# LOAD MEMBER 1, 2 AND 3
+# ============================================================
+
+analysis = build_analysis_context()
+
+if not analysis.get("success"):
+
+    st.error(
+        "Unable to load analysis data: "
+        + analysis.get("error", "Unknown error.")
+    )
+
+    st.stop()
+
+
+recommendation = generate_recommendation(analysis)
+
+if not recommendation.get("success"):
+
+    st.error(
+        "Unable to generate recommendation: "
+        + recommendation.get("error", "Unknown error.")
+    )
+
+    st.stop()
+
+
+# ============================================================
+# GET MEMBER 1 OVERALL ANALYSIS
+# ============================================================
+
+member1 = analysis["member1"]
+
+overall_change = member1.get(
+    "overall_change",
+    {}
+)
+
+previous_period = overall_change.get(
+    "previous_period",
+    "Previous Period"
+)
+
+current_period = overall_change.get(
+    "current_period",
+    "Current Period"
+)
+
+previous_value = overall_change.get(
+    "previous_value",
+    0
+)
+
+current_value = overall_change.get(
+    "current_value",
+    0
+)
+
+absolute_change = overall_change.get(
+    "absolute_change",
+    0
+)
+
+percentage_change = overall_change.get(
+    "percentage_change",
+    0
+)
+
+
+# ============================================================
+# ASK INSIGHTPILOT
+# ============================================================
+
+st.header("💬 Ask InsightPilot")
+
+st.write(
+    "Enter a business question about the current investigation."
 )
 
 question = st.text_area(
-    "Business question",
-    value=(
-        "Why did sales decrease from May 2026 to June 2026, "
-        "what are the possible causes, and what should the "
-        "business do next?"
+    "Business Question",
+    placeholder=(
+        "Example: Why did sales decrease from May 2026 "
+        "to June 2026, what are the possible causes, "
+        "and what should the business do next?"
     ),
-    height=110,
-    label_visibility="collapsed"
+    height=120
 )
 
-
-analyze = st.button(
+if st.button(
     "🔍 Analyze Business Performance",
     type="primary"
-)
-
-
-# =========================================================
-# ANALYSIS
-# =========================================================
-
-if analyze:
+):
 
     if not question.strip():
 
-        st.warning("Please enter a business question.")
-
-        st.stop()
-
-    with st.spinner("Analyzing data and evaluating evidence..."):
-
-        analysis = build_analysis_context()
-
-        if not analysis["success"]:
-
-            st.error(analysis["error"])
-
-            st.stop()
-
-        recommendation = generate_recommendation(
-            analysis
+        st.warning(
+            "Please enter a business question first."
         )
 
-        if not recommendation["success"]:
+    else:
 
-            st.error(recommendation["error"])
+        with st.spinner("Analyzing business data..."):
 
-            st.stop()
+            try:
 
-        response_text = run_insightpilot(
-            question
-        )
+                result = run_insightpilot(
+                    question.strip()
+                )
+
+                st.session_state["question"] = question.strip()
+                st.session_state["result"] = result
+                st.session_state["analyzed"] = True
+
+            except Exception as error:
+
+                st.session_state["analyzed"] = False
+
+                st.error(
+                    f"Analysis failed: {error}"
+                )
 
 
-    # =====================================================
-    # SUCCESS
-    # =====================================================
+# ============================================================
+# SHOW SUCCESS
+# ============================================================
 
-    st.success(
-        "✅ Analysis completed successfully"
+if st.session_state.get("analyzed", False):
+
+    st.success("✅ Analysis completed successfully.")
+
+    st.info(
+        "Question analyzed: "
+        + st.session_state.get("question", "")
     )
 
 
-    # =====================================================
-    # BUSINESS OVERVIEW
-    # =====================================================
+# ============================================================
+# BUSINESS OVERVIEW
+# ============================================================
 
-    st.markdown(
-        '<div class="section-title">📈 Business Overview</div>',
-        unsafe_allow_html=True
+st.header("📈 Business Overview")
+
+# Use two rows instead of four columns.
+# This prevents values from being cut off on smaller screens.
+
+row1_col1, row1_col2 = st.columns(2)
+
+with row1_col1:
+
+    st.metric(
+        "Sales Change",
+        f"{percentage_change:.2f}%"
     )
 
-    member1 = analysis["member1"]
+with row1_col2:
 
-    overall = member1.get(
-        "overall_change",
+    st.metric(
+        "Total Sales Change",
+        f"${absolute_change:,.2f}"
+    )
+
+
+row2_col1, row2_col2 = st.columns(2)
+
+with row2_col1:
+
+    st.metric(
+        f"{previous_period} Sales",
+        f"${previous_value:,.2f}"
+    )
+
+with row2_col2:
+
+    st.metric(
+        f"{current_period} Sales",
+        f"${current_value:,.2f}"
+    )
+
+
+# ============================================================
+# CAUSE INVESTIGATION
+# ============================================================
+
+st.header("🔎 Cause Investigation")
+
+cause_col, validation_col = st.columns(2)
+
+
+candidate_cause = recommendation.get(
+    "candidate_cause",
+    "Unknown"
+)
+
+validation_status = recommendation.get(
+    "validation_status",
+    "UNKNOWN"
+)
+
+reliability_level = recommendation.get(
+    "reliability_level",
+    "UNKNOWN"
+)
+
+reliability_score = recommendation.get(
+    "reliability_score",
+    0
+)
+
+
+# ------------------------------------------------------------
+# CANDIDATE CAUSE
+# ------------------------------------------------------------
+
+with cause_col:
+
+    st.subheader("🎯 Leading Candidate Cause")
+
+    st.info(
+        f"**{candidate_cause}**"
+    )
+
+    st.write(
+        "This candidate cause comes from the Member 2 "
+        "root-cause analysis and is reviewed by Member 3."
+    )
+
+
+# ------------------------------------------------------------
+# VALIDATION
+# ------------------------------------------------------------
+
+with validation_col:
+
+    st.subheader("🛡️ Evidence Validation")
+
+    if validation_status == "UNCERTAIN":
+
+        st.warning(
+            f"**{validation_status}**"
+        )
+
+    elif validation_status == "VALIDATED":
+
+        st.success(
+            f"**{validation_status}**"
+        )
+
+    else:
+
+        st.info(
+            f"**{validation_status}**"
+        )
+
+    st.write(
+        f"Reliability Level: **{reliability_level}**"
+    )
+
+    st.write(
+        f"Evidence Score: **{reliability_score}/100**"
+    )
+
+
+# ============================================================
+# KEY FINDINGS
+# ============================================================
+
+st.header("📌 Key Findings")
+
+dimension_analysis = member1.get(
+    "dimension_analysis",
+    {}
+)
+
+important_dimensions = [
+    ("region", "Region"),
+    ("channel", "Channel"),
+    ("customer_type", "Customer Type"),
+    ("product", "Product")
+]
+
+
+for dimension_key, display_name in important_dimensions:
+
+    results = dimension_analysis.get(
+        dimension_key,
         {}
+    ).get(
+        "results",
+        []
     )
 
-    previous_value = overall.get(
-        "previous_value",
-        0
-    )
+    if results:
 
-    current_value = overall.get(
-        "current_value",
-        0
-    )
-
-    absolute_change = overall.get(
-        "absolute_change",
-        0
-    )
-
-    percentage_change = overall.get(
-        "percentage_change",
-        0
-    )
-
-    previous_period = overall.get(
-        "previous_period",
-        "Previous"
-    )
-
-    current_period = overall.get(
-        "current_period",
-        "Current"
-    )
-
-
-    c1, c2, c3, c4 = st.columns(4)
-
-    with c1:
-
-        st.markdown(
-            f"""
-            <div class="kpi-card">
-                <div class="kpi-label">Sales Change</div>
-                <div class="kpi-value kpi-negative">
-                    ↓ {abs(percentage_change):.2f}%
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-    with c2:
-
-        st.markdown(
-            f"""
-            <div class="kpi-card">
-                <div class="kpi-label">{previous_period} Sales</div>
-                <div class="kpi-value">
-                    ${previous_value:,.2f}
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-    with c3:
-
-        st.markdown(
-            f"""
-            <div class="kpi-card">
-                <div class="kpi-label">{current_period} Sales</div>
-                <div class="kpi-value">
-                    ${current_value:,.2f}
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-    with c4:
-
-        st.markdown(
-            f"""
-            <div class="kpi-card">
-                <div class="kpi-label">Total Decrease</div>
-                <div class="kpi-value kpi-negative">
-                    ${abs(absolute_change):,.2f}
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-
-    # =====================================================
-    # ROOT CAUSE + EVIDENCE
-    # =====================================================
-
-    left, right = st.columns([1, 1])
-
-
-    with left:
-
-        st.markdown(
-            '<div class="section-title">🎯 Possible Root Cause</div>',
-            unsafe_allow_html=True
-        )
-
-        cause = recommendation.get(
-            "candidate_cause",
-            "Not identified"
-        )
-
-        st.markdown(
-            f"""
-            <div class="cause-card">
-                <div class="cause-label">
-                    Leading candidate
-                </div>
-                <div class="cause-value">
-                    {cause}
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-
-    with right:
-
-        st.markdown(
-            '<div class="section-title">🛡️ Evidence Validation</div>',
-            unsafe_allow_html=True
-        )
-
-        validation_status = recommendation.get(
-            "validation_status",
-            "UNKNOWN"
-        )
-
-        reliability = recommendation.get(
-            "reliability_level",
-            "UNKNOWN"
-        )
-
-        score = float(
-            recommendation.get(
-                "reliability_score",
+        sorted_results = sorted(
+            results,
+            key=lambda item: item.get(
+                "percentage_change",
                 0
             )
         )
 
-        st.markdown(
-            f"""
-            <div class="evidence-card">
-                <div class="evidence-title">
-                    ⚠️ Evidence requires caution
-                </div>
-                <br>
-                <b>Validation:</b> {validation_status}<br>
-                <b>Reliability:</b> {reliability}<br>
-                <b>Score:</b> {score:.1f}/100
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+        worst = sorted_results[0]
 
-        st.progress(
-            min(max(score / 100, 0.0), 1.0)
-        )
-
-
-    # =====================================================
-    # IMPORTANT CAUTION
-    # =====================================================
-
-    if recommendation.get("status") == "CAUTION":
-
-        st.warning(
-            "⚠️ The possible root cause is NOT confirmed. "
-            "Additional evidence should be collected before "
-            "making major business decisions."
-        )
-
-
-    # =====================================================
-    # KEY FINDINGS
-    # =====================================================
-
-    st.markdown(
-        '<div class="section-title">🔎 Key Findings</div>',
-        unsafe_allow_html=True
-    )
-
-    dimension_analysis = member1.get(
-        "dimension_analysis",
-        {}
-    )
-
-
-    findings = [
-        ("North region", "region", "North"),
-        ("South region", "region", "South"),
-        ("Online channel", "channel", "Online"),
-        ("Returning customers", "customer_type", "Returning"),
-        ("Product B", "product", "Product B")
-    ]
-
-
-    for label, dimension, value in findings:
-
-        results = dimension_analysis.get(
-            dimension,
-            {}
-        ).get(
-            "results",
-            []
-        )
-
-        for item in results:
-
-            item_value = str(
-                item.get(
-                    "value",
-                    ""
-                )
+        name = worst.get(
+            "dimension_value",
+            worst.get(
+                "name",
+                "Unknown"
             )
+        )
 
-            if item_value.lower() == value.lower():
+        change = worst.get(
+            "percentage_change",
+            0
+        )
 
-                change = item.get(
-                    "percentage_change",
-                    0
-                )
-
-                st.markdown(
-                    f"""
-                    <div class="finding">
-                        <strong>{label}</strong>
-                        &nbsp;&nbsp;
-                        <span>↓ {abs(change):.2f}%</span>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
-
-                break
-
-
-    # =====================================================
-    # AI RECOMMENDATION
-    # =====================================================
-
-    st.markdown(
-        '<div class="section-title">🤖 Decision Support</div>',
-        unsafe_allow_html=True
-    )
-
-    st.markdown(
-        '<div class="recommendation-card">',
-        unsafe_allow_html=True
-    )
-
-    st.text(response_text)
-
-    st.markdown(
-        '</div>',
-        unsafe_allow_html=True
-    )
-
-
-    # =====================================================
-    # NEXT STEPS
-    # =====================================================
-
-    st.markdown(
-        '<div class="section-title">💡 Recommended Actions</div>',
-        unsafe_allow_html=True
-    )
-
-    actions = [
-        "Investigate historical inventory and stockout records.",
-        "Analyze returning-customer behavior.",
-        "Audit the online sales funnel.",
-        "Review pricing, promotions, and seasonal demand.",
-        "Check supplier delivery performance and product availability."
-    ]
-
-
-    for index, action in enumerate(actions, 1):
-
-        st.markdown(
-            f"""
-            <div class="finding">
-                <strong>{index}.</strong> {action}
-            </div>
-            """,
-            unsafe_allow_html=True
+        st.write(
+            f"**{display_name}:** "
+            f"{name} — **{change:.2f}%**"
         )
 
 
-    # =====================================================
-    # DECISION GUIDANCE
-    # =====================================================
+# ============================================================
+# MEMBER 4 DECISION SUPPORT
+# ============================================================
 
-    st.markdown(
-        '<div class="section-title">🧭 Decision Guidance</div>',
-        unsafe_allow_html=True
-    )
+st.header("🧠 Member 4 Decision Support")
+
+result_text = st.session_state.get(
+    "result",
+    ""
+)
+
+if result_text:
+
+    st.subheader("InsightPilot Recommendation")
+
+    st.write(result_text)
+
+else:
 
     st.info(
-        "Prioritize investigation and targeted corrective "
-        "actions rather than assuming inventory shortage is "
-        "the sole cause of the overall sales decline."
+        "Enter a business question above and click "
+        "'Analyze Business Performance' to generate "
+        "the decision-support response."
     )
 
 
-# =========================================================
-# FOOTER
-# =========================================================
+# ============================================================
+# RECOMMENDED ACTIONS
+# ============================================================
 
-st.markdown(
-    """
-    <div class="footer">
-        InsightPilot • AI-powered Business Decision Support
-        <br>
-        Evidence-aware • Explainable • Action-oriented
-    </div>
-    """,
-    unsafe_allow_html=True
+st.header("🚀 Recommended Actions")
+
+actions = [
+    "Investigate historical inventory and stockout records.",
+    "Analyze returning-customer behavior because returning customer sales declined substantially.",
+    "Audit the online sales funnel for possible conversion or customer-experience problems.",
+    "Review pricing, promotions, and seasonal demand changes.",
+    "Check supplier delivery performance and product-level inventory availability."
+]
+
+for index, action in enumerate(actions, start=1):
+
+    st.write(
+        f"**{index}.** {action}"
+    )
+
+
+# ============================================================
+# EVIDENCE-BASED DECISION GUIDANCE
+# ============================================================
+
+st.header("⚠️ Evidence-Based Decision Guidance")
+
+st.warning(
+    "Inventory shortage is a leading candidate, but it is "
+    "NOT confirmed as the root cause. The evidence reliability "
+    f"is {reliability_level} with a score of "
+    f"{reliability_score}/100. Major operational decisions "
+    "should not be based only on this candidate cause."
+)
+
+
+# ============================================================
+# FOOTER
+# ============================================================
+
+st.divider()
+
+st.caption(
+    "InsightPilot • Multi-Agent Business Intelligence & "
+    "Decision Support"
+)
+
+st.caption(
+    "Member 1 → Member 2 → Member 3 → Member 4"
 )
