@@ -1,0 +1,101 @@
+{
+  "overall_change": {
+    "metric": "sales",
+    "granularity": "month",
+    "previous_period": "2026-05",
+    "current_period": "2026-06",
+    "previous_value": 4671012.26,
+    "current_value": 4110079.75,
+    "absolute_change": -560932.5099999998,
+    "percentage_change": -12.01,
+    "direction": "decrease"
+  },
+  "insights": [
+    {
+      "type": "overall",
+      "severity": "high",
+      "message": "Sales decreased by 12.01% from 2026-05 to 2026-06."
+    },
+    {
+      "type": "region",
+      "dimension_value": "North",
+      "severity": "high",
+      "percentage_change": -22.67,
+      "message": "region 'North' decreased by 22.67%."
+    },
+    {
+      "type": "region",
+      "dimension_value": "South",
+      "severity": "medium",
+      "percentage_change": -17.16,
+      "message": "region 'South' decreased by 17.16%."
+    },
+    {
+      "type": "product",
+      "dimension_value": "Product B",
+      "severity": "medium",
+      "percentage_change": -14.15,
+      "message": "product 'Product B' decreased by 14.15%."
+    },
+    {
+      "type": "product",
+      "dimension_value": "Product C",
+      "severity": "medium",
+      "percentage_change": -12.19,
+      "message": "product 'Product C' decreased by 12.19%."
+    },
+    {
+      "type": "product",
+      "dimension_value": "Product D",
+      "severity": "medium",
+      "percentage_change": -12.46,
+      "message": "product 'Product D' decreased by 12.46%."
+    },
+    {
+      "type": "category",
+      "dimension_value": "Electronics",
+      "severity": "medium",
+      "percentage_change": -11.82,
+      "message": "category 'Electronics' decreased by 11.82%."
+    },
+    {
+      "type": "category",
+      "dimension_value": "Home",
+      "severity": "medium",
+      "percentage_change": -12.32,
+      "message": "category 'Home' decreased by 12.32%."
+    },
+    {
+      "type": "channel",
+      "dimension_value": "Online",
+      "severity": "medium",
+      "percentage_change": -18.07,
+      "message": "channel 'Online' decreased by 18.07%."
+    },
+    {
+      "type": "customer_type",
+      "dimension_value": "Returning",
+      "severity": "high",
+      "percentage_change": -27.13,
+      "message": "customer_type 'Returning' decreased by 27.13%."
+    },
+    {
+      "type": "customer_segment",
+      "dimension_value": "Standard",
+      "severity": "medium",
+      "percentage_change": -15.51,
+      "message": "customer_segment 'Standard' decreased by 15.51%."
+    }
+  ],
+  "root_causes": [
+    {
+      "region": "South",
+      "product": "Product B",
+      "channel": "Online",
+      "sales_change_pct": -63.21,
+      "inventory_availability": 0.545,
+      "root_cause": "Inventory shortage",
+      "recommendation": "Increase inventory availability and prioritize replenishment."
+    }
+  ]
+}
