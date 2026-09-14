@@ -1,0 +1,63 @@
+{
+  "validated_root_causes": [
+    {
+      "candidate_cause": "Inventory shortage",
+      "alternative_causes": [
+        "Demand spike",
+        "Pricing changes",
+        "Seasonal demand variation",
+        "Supplier delays",
+        "Data recording issues"
+      ],
+      "devils_advocate_challenges": [
+        "Could the sales decline be caused by lower customer demand instead?",
+        "Could pricing changes have reduced sales rather than inventory availability?",
+        "Could supplier delays be temporary rather than the main cause?",
+        "Could the observed inventory shortage be a result of lower demand?"
+      ],
+      "counterfactual_analysis": {
+        "candidate_cause": "Inventory shortage",
+        "counterfactual_question": "If inventory availability were normal, would the sales decline still be expected?",
+        "expected_effect": "If sales remain below normal despite adequate inventory, inventory shortage is unlikely to be the only cause.",
+        "evidence_needed": [
+          "Inventory availability before and during the decline",
+          "Sales for products with adequate inventory",
+          "Stockout frequency"
+        ]
+      },
+      "potential_confounders": [
+        "Seasonality",
+        "Customer demand",
+        "Supplier performance",
+        "Pricing",
+        "Promotional activity"
+      ],
+      "contradictory_evidence": [
+        "Some products may show normal inventory availability despite the sales decline.",
+        "If sales declined in locations with adequate inventory, inventory shortage may not explain the entire decline.",
+        "If stockouts were rare, inventory shortage is less likely to be the primary cause."
+      ],
+      "missing_evidence": [
+        "Inventory availability data",
+        "Stockout frequency",
+        "Product-level inventory levels",
+        "Sales comparison for products with adequate inventory",
+        "Supplier delivery performance"
+      ],
+      "evidence_reliability_score": 40.0,
+      "reliability_level": "LOW",
+      "validation_status": "UNCERTAIN",
+      "limitations": [
+        "Important evidence is missing.",
+        "Contradictory evidence exists.",
+        "Potential confounding factors were identified."
+      ],
+      "region": "South",
+      "product": "Product B",
+      "channel": "Online",
+      "sales_change_pct": -63.21,
+      "inventory_availability": 0.545,
+      "recommendation": "Increase inventory availability and prioritize replenishment."
+    }
+  ]
+}
