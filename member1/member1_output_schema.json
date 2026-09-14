@@ -1,0 +1,44 @@
+{
+  "description": "InsightPilot Member 1 Data Analysis Output",
+  "version": "1.0",
+
+  "dataset": {
+    "file": "string",
+    "rows": "integer",
+    "columns": "integer"
+  },
+
+  "validation": {
+    "status": "string",
+    "warnings": "array",
+    "missing_values": "object",
+    "duplicate_rows": "integer"
+  },
+
+  "profile": {
+    "rows": "integer",
+    "columns": "integer",
+    "numeric_columns": "array",
+    "date_columns": "array",
+    "dimensions": "array",
+    "date_range": "object",
+    "unique_values": "object"
+  },
+
+  "overall_change": {
+    "metric": "string",
+    "granularity": "string",
+    "previous_period": "string",
+    "current_period": "string",
+    "previous_value": "number",
+    "current_value": "number",
+    "absolute_change": "number",
+    "percentage_change": "number",
+    "direction": "string"
+  },
+
+  "dimension_analysis": {
+    "description": "Analysis for every discovered dimension",
+    "type": "object"
+  }
+}

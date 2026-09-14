@@ -1,0 +1,309 @@
+{
+    "dataset": {
+        "file": "data/realistic_sales_v2.csv",
+        "rows": 20000,
+        "columns": 16
+    },
+    "validation": {
+        "rows": 20000,
+        "columns": 16,
+        "missing_values": {},
+        "duplicate_rows": 0,
+        "numeric_columns": [
+            "sales",
+            "units",
+            "price",
+            "discount_pct",
+            "returns",
+            "inventory_availability",
+            "marketing_spend",
+            "competitor_price_index",
+            "customer_satisfaction"
+        ],
+        "data_types": {
+            "date": "str",
+            "region": "str",
+            "product": "str",
+            "category": "str",
+            "channel": "str",
+            "customer_type": "str",
+            "customer_segment": "str",
+            "sales": "float64",
+            "units": "int64",
+            "price": "float64",
+            "discount_pct": "float64",
+            "returns": "int64",
+            "inventory_availability": "float64",
+            "marketing_spend": "float64",
+            "competitor_price_index": "float64",
+            "customer_satisfaction": "float64"
+        },
+        "date_columns": [
+            "date"
+        ],
+        "invalid_dates": {},
+        "warnings": [],
+        "status": "GOOD"
+    },
+    "profile": {
+        "rows": 20000,
+        "columns": 16,
+        "numeric_columns": [
+            "sales",
+            "units",
+            "price",
+            "discount_pct",
+            "returns",
+            "inventory_availability",
+            "marketing_spend",
+            "competitor_price_index",
+            "customer_satisfaction"
+        ],
+        "date_columns": [
+            "date"
+        ],
+        "dimensions": [
+            "region",
+            "product",
+            "category",
+            "channel",
+            "customer_type",
+            "customer_segment"
+        ],
+        "date_range": {
+            "start": "2025-01-01",
+            "end": "2026-06-30"
+        },
+        "unique_values": {
+            "region": [
+                "South",
+                "West",
+                "North",
+                "East"
+            ],
+            "product": [
+                "Product C",
+                "Product B",
+                "Product A",
+                "Product D"
+            ],
+            "category": [
+                "Home",
+                "Electronics"
+            ],
+            "channel": [
+                "Partner",
+                "Online",
+                "Store"
+            ],
+            "customer_type": [
+                "New",
+                "Returning"
+            ],
+            "customer_segment": [
+                "Standard",
+                "Budget",
+                "Premium"
+            ]
+        }
+    },
+    "overall_change": {
+        "metric": "sales",
+        "granularity": "month",
+        "previous_period": "2026-05",
+        "current_period": "2026-06",
+        "previous_value": 4671012.26,
+        "current_value": 4110079.75,
+        "absolute_change": -560932.5099999998,
+        "percentage_change": -12.01,
+        "direction": "decrease"
+    },
+    "dimension_analysis": {
+        "region": {
+            "dimension": "region",
+            "previous_period": "2026-05",
+            "current_period": "2026-06",
+            "results": [
+                {
+                    "dimension_value": "East",
+                    "previous_value": 1068832.95,
+                    "current_value": 1009541.08,
+                    "absolute_change": -59291.87,
+                    "percentage_change": -5.55,
+                    "direction": "decrease"
+                },
+                {
+                    "dimension_value": "North",
+                    "previous_value": 1288700.22,
+                    "current_value": 996586.6,
+                    "absolute_change": -292113.62,
+                    "percentage_change": -22.67,
+                    "direction": "decrease"
+                },
+                {
+                    "dimension_value": "South",
+                    "previous_value": 1115401.79,
+                    "current_value": 924003.61,
+                    "absolute_change": -191398.18,
+                    "percentage_change": -17.16,
+                    "direction": "decrease"
+                },
+                {
+                    "dimension_value": "West",
+                    "previous_value": 1198077.3,
+                    "current_value": 1179948.46,
+                    "absolute_change": -18128.84,
+                    "percentage_change": -1.51,
+                    "direction": "decrease"
+                }
+            ]
+        },
+        "product": {
+            "dimension": "product",
+            "previous_period": "2026-05",
+            "current_period": "2026-06",
+            "results": [
+                {
+                    "dimension_value": "Product A",
+                    "previous_value": 1025359.8,
+                    "current_value": 948681.12,
+                    "absolute_change": -76678.68,
+                    "percentage_change": -7.48,
+                    "direction": "decrease"
+                },
+                {
+                    "dimension_value": "Product B",
+                    "previous_value": 1912250.33,
+                    "current_value": 1641598.96,
+                    "absolute_change": -270651.37,
+                    "percentage_change": -14.15,
+                    "direction": "decrease"
+                },
+                {
+                    "dimension_value": "Product C",
+                    "previous_value": 884504.88,
+                    "current_value": 776648.13,
+                    "absolute_change": -107856.75,
+                    "percentage_change": -12.19,
+                    "direction": "decrease"
+                },
+                {
+                    "dimension_value": "Product D",
+                    "previous_value": 848897.25,
+                    "current_value": 743151.54,
+                    "absolute_change": -105745.71,
+                    "percentage_change": -12.46,
+                    "direction": "decrease"
+                }
+            ]
+        },
+        "category": {
+            "dimension": "category",
+            "previous_period": "2026-05",
+            "current_period": "2026-06",
+            "results": [
+                {
+                    "dimension_value": "Electronics",
+                    "previous_value": 2937610.13,
+                    "current_value": 2590280.08,
+                    "absolute_change": -347330.05,
+                    "percentage_change": -11.82,
+                    "direction": "decrease"
+                },
+                {
+                    "dimension_value": "Home",
+                    "previous_value": 1733402.13,
+                    "current_value": 1519799.67,
+                    "absolute_change": -213602.46,
+                    "percentage_change": -12.32,
+                    "direction": "decrease"
+                }
+            ]
+        },
+        "channel": {
+            "dimension": "channel",
+            "previous_period": "2026-05",
+            "current_period": "2026-06",
+            "results": [
+                {
+                    "dimension_value": "Online",
+                    "previous_value": 2187400.54,
+                    "current_value": 1792168.85,
+                    "absolute_change": -395231.69,
+                    "percentage_change": -18.07,
+                    "direction": "decrease"
+                },
+                {
+                    "dimension_value": "Partner",
+                    "previous_value": 626171.99,
+                    "current_value": 583750.33,
+                    "absolute_change": -42421.66,
+                    "percentage_change": -6.77,
+                    "direction": "decrease"
+                },
+                {
+                    "dimension_value": "Store",
+                    "previous_value": 1857439.73,
+                    "current_value": 1734160.57,
+                    "absolute_change": -123279.16,
+                    "percentage_change": -6.64,
+                    "direction": "decrease"
+                }
+            ]
+        },
+        "customer_type": {
+            "dimension": "customer_type",
+            "previous_period": "2026-05",
+            "current_period": "2026-06",
+            "results": [
+                {
+                    "dimension_value": "New",
+                    "previous_value": 1576203.01,
+                    "current_value": 1854924.56,
+                    "absolute_change": 278721.55,
+                    "percentage_change": 17.68,
+                    "direction": "increase"
+                },
+                {
+                    "dimension_value": "Returning",
+                    "previous_value": 3094809.25,
+                    "current_value": 2255155.19,
+                    "absolute_change": -839654.06,
+                    "percentage_change": -27.13,
+                    "direction": "decrease"
+                }
+            ]
+        },
+        "customer_segment": {
+            "dimension": "customer_segment",
+            "previous_period": "2026-05",
+            "current_period": "2026-06",
+            "results": [
+                {
+                    "dimension_value": "Budget",
+                    "previous_value": 1166196.17,
+                    "current_value": 1080834.66,
+                    "absolute_change": -85361.51,
+                    "percentage_change": -7.32,
+                    "direction": "decrease"
+                },
+                {
+                    "dimension_value": "Premium",
+                    "previous_value": 872070.02,
+                    "current_value": 804900.31,
+                    "absolute_change": -67169.71,
+                    "percentage_change": -7.7,
+                    "direction": "decrease"
+                },
+                {
+                    "dimension_value": "Standard",
+                    "previous_value": 2632746.07,
+                    "current_value": 2224344.78,
+                    "absolute_change": -408401.29,
+                    "percentage_change": -15.51,
+                    "direction": "decrease"
+                }
+            ]
+        }
+    }
+}

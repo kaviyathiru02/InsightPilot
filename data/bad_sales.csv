@@ -1,0 +1,8 @@
+date,region,product,channel,customer_type,sales,units
+2026-01-01,North,A,Online,New,10000,100
+2026-01-01,North,B,Store,Returning,8000,80
+INVALID_DATE,South,A,Online,New,12000,120
+2026-02-01,South,B,Store,Returning,,90
+2026-02-01,East,A,Online,New,8800,88
+2026-02-01,East,B,Store,Returning,6800,68
+2026-02-01,East,B,Store,Returning,6800,68
